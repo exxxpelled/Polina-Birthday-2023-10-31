@@ -1,0 +1,125 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  --index: calc(1vw + 1vh);
+  --gutter: 30px;
+  --side-small: 26;
+  --side-big: 36;
+  --depth: 4100px;
+  --transition: 0.75s cubic-bezier(0.075, 0.5, 0, 1);
+}
+@font-face {
+  font-family: raleway_c;
+  src: url(../fonts/raleway-v22-cyrillic-300.woff2);
+  font-weight: 300;
+}
+@font-face {
+  font-family: raleway_c;
+  src: url(../fonts/raleway-v22-cyrillic-100.woff2);
+  font-weight: 100;
+}
+body {
+  background-color: #000;
+  color: #fff;
+  font-size: calc(var(--index) * 0.9);
+  font-family: raleway_c, sans-serif;
+  line-height: 1.75;
+  height: var(--depth);
+  font-weight: 300;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  perspective: 1500px;
+}
+.gallery {
+  transform-style: preserve-3d;
+  height: 100%;
+}
+.frame {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition), opacity 0.75s ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 300;
+  text-transform: uppercase;
+  width: min-content;
+  line-height: 1;
+}
+
+.frame-start_text {
+  text-align: center;
+  font-size: calc(var(--index) * 1.5);
+}
+
+.frame-end_text {
+  text-align: center;
+  font-size: calc(var(--index) * 2.5);
+}
+
+.frame-media {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  width: calc(var(--index) * var(--side-small));
+  height: calc(var(--index) * var(--side-big));
+  background-position: center;
+  background-size: cover;
+}
+.frame-media_left {
+  right: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+.frame-media_right {
+  left: calc(var(--side-small) / 2 * var(--index) + var(--gutter));
+}
+.frame_bg {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.text-left > * {
+  width: max-content;
+  margin-right: calc(var(--index) + 1vw);
+  position: relative;
+  right: 25vw;
+}
+.text-right > * {
+  position: relative;
+  left: 18vw;
+}
+.frame h3 {
+  font-size: calc(var(--index) * 3);
+}
+.frame p {
+  font-size: calc(var(--index) * 1.3);
+  max-width: 30vw;
+  margin-top: 2vh;
+}
+
+.soundbutton {
+  position: fixed;
+  bottom: 5vh;
+  right: 5vw;
+  cursor: pointer;
+  width: calc(var(--index) * 2);
+  transition: 0.25s ease;
+}
+
+.soundbutton.paused {
+  opacity: 0.25;
+}
